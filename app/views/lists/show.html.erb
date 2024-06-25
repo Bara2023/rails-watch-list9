@@ -1,0 +1,31 @@
+<h1><%= @list.name %></h1>
+
+<div class="container">
+  <% @bookmarks.each do |bookmark| %>
+    <div class="card card-trip mb-4">
+      <% if bookmark.movie.poster_url.present? %>
+        <%= image_tag bookmark.movie.poster_url, class: "card-img-top" %>
+      <% end %>
+      <div class="card-body">
+        <h2 class="me-3">Title: <%= bookmark.movie.title %></h2>
+        <p class="card-text"><%= bookmark.movie.rating %> Stars</p>
+        <p class="card-text"><%= bookmark.movie.overview %></p>
+        <div class="d-flex justify-content-between align-items-center">
+          <%= link_to bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" do %>
+            <i class="fa-regular fa-trash-can"></i>
+          <% end %>
+          
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="links-btn">
+    <%= link_to new_list_bookmark_path(@list), class: "btn btn-primary mb-2" do %>
+      Add a movie
+    <% end %>
+    <%= link_to lists_path, class: "btn btn-primary mb-2" do %>
+      Back
+    <% end %>
+  </div>
+</div>

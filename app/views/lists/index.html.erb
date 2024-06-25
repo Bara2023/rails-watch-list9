@@ -1,0 +1,24 @@
+
+<%= render "navbar" %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://cdn.dribbble.com/userupload/5207970/file/original-31a7fd72220060e9481796577867d553.jpg);">
+            <div class="container">
+              <h1 class="text-center">Save any kind of movies!</h1>
+              <p class="text-center">Classic.</p>
+              </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <% @lists.each do |list| %>
+      <div class="col-md-6 card-category-wrapper">
+        <%= link_to list_path(list), class: 'card-category text-decoration-none', style: "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://cdn.dribbble.com/users/4835348/screenshots/16008750/media/02916412fe5a3e0b92faaa95dd9587f0.png)" do %>
+          <h1><%= list.name %></h1>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to new_list_path do %>
+    <button class="btn btn-primary">Add a list</button>
+  <% end %>
+</div>
